@@ -76,11 +76,8 @@ autocmd FileType css let g:syntastic_checkers = ['csslint']
 let g:vim_markdown_folding_disabled=1    "disable the folding configuration
 nmap <leader>md :%! /usr/local/bin/Markdown.pl --html4tags <cr>
 
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-map <leader>f :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen=0 "打开文件时关闭树
-
+" NERDTreeTabs
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 nnoremap <leader>u :call BundlesInit()<CR>
 "初始化pathogen插件
@@ -96,8 +93,9 @@ function! BundlesInit()
             \'snipmate.vim' : 'github.com/msanders/snipmate.vim.git',
             \'zencoding-vim' : 'github.com/mattn/zencoding-vim.git',
             \'syntastic' : 'github.com/scrooloose/syntastic.git',
-            \'vim-fugitive' : 'github.com/tpope/vim-fugitive',
-            \'vim-powerline' : 'github.com/Lokaltog/powerline',
+            \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
+            \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
+            \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
     if !isdirectory(bundleDir)
