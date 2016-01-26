@@ -6,8 +6,6 @@ set hls
 set is
 "显示行号
 set number
-"开启光标下划线
-set cursorline
 "文件默认编码
 set encoding=utf-8
 "打开文件进行解码的猜测列表，优先以utf-8打开
