@@ -1,42 +1,43 @@
+"设置非兼容模式
+set nocp
+"防止mac中delete键失效 0 :set backspace= (Vi compatible);1“:set backspace=indent,eol”; 2 :set backspace=indent,eol,start
+set backspace=2
 "设置mapleader
 let mapleader="'"
-"搜索时高亮显示结果
+"搜索相关
 set hls
-"输入搜索命令时，显示目前输入的模式的匹配位置
 set is
-"显示行号
-set number
-"文件默认编码
+"文件格式相关
 set encoding=utf-8
-"打开文件进行解码的猜测列表，优先以utf-8打开
 set fileencodings=utf-8,gbk
-"文件默认格式unix
 set ff=unix
-"缩进为4个空格宽度
-set tabstop=4
-"自动缩进使用的空格数
+"缩进相关
 set shiftwidth=4
-"编辑插入tab时，把tab算作的空格数
-set softtabstop=4
-"缩进使用空格
-set expandtab
-"自动缩进
-set autoindent
+set ts=4 
+set softtabstop=4 
+set expandtab 
+set autoindent 
+vnoremap < <gv
+vnoremap > >gv
 "打开语法高亮
 syntax on
-"背景
+filetype on
+au BufNewFile,BufRead *.ftl set filetype=html
+
+"背景主题相关
 let g:solarized_termcolors=256
 set background=dark
-"主题
 colorscheme darkplus 
-"设置字典
-autocmd FileType javascript set dictionary=~/.vim/dict/javascript.dict
-"设置全局粘贴模式
-set paste
+"粘贴相关,设置全局粘贴模式, visual模式修改缩进时不退出该模式,
+set pastetoggle=<F2>
+vmap <leader>c :w !pbcopy<CR><CR>
+nmap <leader>v :r !pbpaste<CR><CR>
 
-"显示标签栏 0: 从不 1: 大于1个时显示 2: 总是
+"显示标签栏 0: 从不 1: 大于1个时显示 2: 总是; 显示行号,开启光标下划线
 set showtabline=1
 set laststatus=2
+set number
+"set cursorline
 
 set comments=sl:/*,mb:*,ex:*/
 
@@ -56,16 +57,11 @@ map <leader>r :!node --harmony %<CR>
 "映射Ctrl+F12键为行号的开关
 map <leader>d :set number!<CR>
 
-" visual模式修改缩进时不退出该模式
-vnoremap < <gv
-vnoremap > >gv
-
 nmap <C-N> :tabnext<CR>
 nmap <C-P> :tabprevious<CR>
 
-"设置全局复制和全局粘贴
-vmap <leader>c :w !pbcopy<CR><CR>
-nmap <leader>v :r !pbpaste<CR><CR>
+
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 " 设置syntastic_checkers
 "let g:syntastic_check_on_open = 0
@@ -87,10 +83,11 @@ function! BundlesInit()
     let bundles = {
             \'vim-pathogen' : 'github.com/tpope/vim-pathogen.git',
             \'nerdtree' : 'github.com/scrooloose/nerdtree.git',
-            \'snipmate.vim' : 'github.com/msanders/snipmate.vim.git',
+            \'snipmate.vim' : 'github.com/dzyhenry/snipmate.vim.git',
             \'emmet-vim' : 'github.com/mattn/emmet-vim.git',
             \'syntastic' : 'github.com/scrooloose/syntastic.git',
             \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
+            \'indentLine' : 'github.com/Yggdroot/indentLine.git',
             \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
         \}
