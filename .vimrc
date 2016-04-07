@@ -1,4 +1,6 @@
+inoremap <tab> <C-n>
 "设置非兼容模式
+set nocompatible
 set nocp
 "防止mac中delete键失效 0 :set backspace= (Vi compatible);1“:set backspace=indent,eol”; 2 :set backspace=indent,eol,start
 set backspace=2
@@ -12,9 +14,9 @@ set encoding=utf-8
 set fileencodings=utf-8,gbk
 set ff=unix
 "缩进相关
-set shiftwidth=4
-set ts=4 
-set softtabstop=4 
+set shiftwidth=2
+set ts=2
+set softtabstop=2
 set expandtab 
 set autoindent 
 vnoremap < <gv
@@ -60,8 +62,8 @@ map <leader>d :set number!<CR>
 nmap <C-N> :tabnext<CR>
 nmap <C-P> :tabprevious<CR>
 
-
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
 
 " 设置syntastic_checkers
 "let g:syntastic_check_on_open = 0
@@ -70,7 +72,11 @@ let g:syntastic_html_tidy_exec = 'tidy'
 let g:CSSLint_FileTypeList = ['css', 'less', 'sess']
 
 " NERDTreeTabs
+let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+map <Leader>t <plug>NERDTreeTabsFind<CR>
+map <Leader>f <plug>NERDTreeFocusToggle<CR>
 
 nnoremap <leader>u :call BundlesInit()<CR>
 "初始化pathogen插件
@@ -78,18 +84,22 @@ let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
 execute "source " . pathogen
 call pathogen#infect()
 
+"for superttab to cancel completion with 'esc'
+"let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
+"inoremap <expr> <esc> pumvisible() ? "\<c-e>" : "\<esc>"
+
 "初始化所有插件
 function! BundlesInit()
     let bundles = {
             \'vim-pathogen' : 'github.com/tpope/vim-pathogen.git',
             \'nerdtree' : 'github.com/scrooloose/nerdtree.git',
             \'snipmate.vim' : 'github.com/dzyhenry/snipmate.vim.git',
-            \'emmet-vim' : 'github.com/mattn/emmet-vim.git',
             \'syntastic' : 'github.com/scrooloose/syntastic.git',
             \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
             \'indentLine' : 'github.com/Yggdroot/indentLine.git',
             \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
+            \'supertab' : 'github.com/ervandew/supertab.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
     if !isdirectory(bundleDir)
