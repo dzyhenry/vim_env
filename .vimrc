@@ -99,6 +99,7 @@ function! BundlesInit()
             \'indentLine' : 'github.com/Yggdroot/indentLine.git',
             \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
+            \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'supertab' : 'github.com/ervandew/supertab.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
