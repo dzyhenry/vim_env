@@ -4,6 +4,10 @@ set nocompatible
 set nocp
 "防止mac中delete键失效 0 :set backspace= (Vi compatible);1“:set backspace=indent,eol”; 2 :set backspace=indent,eol,start
 set backspace=2
+
+"使用鼠标，不建议使用
+"set mouse=a
+
 "设置mapleader
 let mapleader="'"
 "搜索相关
@@ -14,13 +18,11 @@ set encoding=utf-8
 set fileencodings=utf-8,gbk
 set ff=unix
 "缩进相关
+set smartindent
 set shiftwidth=2
-set ts=2
-set softtabstop=2
 set expandtab 
-set autoindent 
-vnoremap < <gv
-vnoremap > >gv
+set tabstop=2
+set softtabstop=2
 "打开语法高亮
 syntax on
 filetype on
@@ -31,6 +33,8 @@ let g:solarized_termcolors=256
 set background=dark
 colorscheme darkplus 
 "粘贴相关,设置全局粘贴模式, visual模式修改缩进时不退出该模式,
+vnoremap < <gv
+vnoremap > >gv
 set pastetoggle=<F2>
 vmap <leader>c :w !pbcopy<CR><CR>
 nmap <leader>v :r !pbpaste<CR><CR>
