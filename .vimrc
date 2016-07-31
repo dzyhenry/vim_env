@@ -8,6 +8,11 @@ set backspace=2
 "使用鼠标，不建议使用
 "set mouse=a
 
+"设置光标所在行
+:set cursorline 
+" dark redish
+:hi CursorLine   cterm=NONE ctermbg=52 ctermfg=NONE
+
 "设置mapleader
 let mapleader="'"
 "搜索相关
@@ -18,7 +23,7 @@ set encoding=utf-8
 set fileencodings=utf-8,gbk
 set ff=unix
 "缩进相关
-set smartindent
+set autoindent
 set shiftwidth=2
 set expandtab 
 set tabstop=2
@@ -29,9 +34,9 @@ filetype on
 au BufNewFile,BufRead *.ftl set filetype=html
 
 "背景主题相关
-let g:solarized_termcolors=256
-set background=dark
-colorscheme darkplus 
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme darkplus 
 "粘贴相关,设置全局粘贴模式, visual模式修改缩进时不退出该模式,
 vnoremap < <gv
 vnoremap > >gv
