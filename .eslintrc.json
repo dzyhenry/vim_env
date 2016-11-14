@@ -1,0 +1,19 @@
+{
+  "extends": "airbnb",
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "strict": 0,
+    "max-len": [2, 200, 2, {"ignoreUrls": true}],
+    "no-nested-ternary": 0,
+    "react/jsx-filename-extension": 0,
+    "jsx-a11y/no-static-element-interactions": 0
+  },
+  "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+          "experimentalObjectRestSpread": true
+      }
+  }
+}
