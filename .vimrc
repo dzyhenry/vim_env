@@ -109,6 +109,7 @@ function! BundlesInit()
             \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
+            \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git',
             \'commentary' : 'github.com/tpope/vim-commentary.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
