@@ -31,12 +31,13 @@ set softtabstop=2
 "打开语法高亮
 syntax on
 filetype on
+filetype plugin on
 au BufNewFile,BufRead *.ftl set filetype=html
 
 "背景主题相关
-"let g:solarized_termcolors=256
-"set background=dark
-"colorscheme darkplus 
+let g:solarized_termcolors=256
+set background=dark
+colorscheme darkplus 
 "粘贴相关,设置全局粘贴模式, visual模式修改缩进时不退出该模式,
 vnoremap < <gv
 vnoremap > >gv
@@ -73,7 +74,6 @@ nmap <C-P> :tabprevious<CR>
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-
 " 设置syntastic_checkers
 "let g:syntastic_check_on_open = 0
 let g:syntastic_javascript_checkers = ['eslint']
@@ -92,10 +92,6 @@ nnoremap <leader>u :call BundlesInit()<CR>
 let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
 execute "source " . pathogen
 call pathogen#infect()
-
-"for superttab to cancel completion with 'esc'
-"let g:SuperTabNoCompleteAfter = ['^', ',', '\s']
-"inoremap <expr> <esc> pumvisible() ? "\<c-e>" : "\<esc>"
 
 "初始化所有插件
 function! BundlesInit()
