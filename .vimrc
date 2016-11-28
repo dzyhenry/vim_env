@@ -87,12 +87,15 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 map <Leader>t <plug>NERDTreeTabsFind<CR>
 map <Leader>f <plug>NERDTreeFocusToggle<CR>
 
-nnoremap <leader>u :call BundlesInit()<CR>
+"imstart set default keylayout
+let g:smartim_default = 'com.apple.keylayout.US'
+
 "初始化pathogen插件
 let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
 execute "source " . pathogen
 call pathogen#infect()
 
+nnoremap <leader>u :call BundlesInit()<CR>
 "初始化所有插件
 function! BundlesInit()
     let bundles = {
@@ -106,7 +109,8 @@ function! BundlesInit()
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git',
-            \'commentary' : 'github.com/tpope/vim-commentary.git'
+            \'commentary' : 'github.com/tpope/vim-commentary.git',
+            \'smartim' : 'github.com/ybian/smartim.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
     if !isdirectory(bundleDir)
