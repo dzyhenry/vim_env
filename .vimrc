@@ -33,6 +33,13 @@ syntax on
 filetype on
 filetype plugin on
 au BufNewFile,BufRead *.ftl set filetype=html
+"代码折叠
+set foldenable
+set foldmethod=indent
+set foldcolumn=0
+setlocal foldlevel=1 
+set foldlevelstart=99
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 "背景主题相关
 let g:solarized_termcolors=256
