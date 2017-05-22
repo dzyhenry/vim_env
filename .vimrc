@@ -7,9 +7,8 @@ set backspace=2
 
 "使用鼠标，不建议使用
 "set mouse=a
-
 "设置光标所在行
-:set cursorline 
+":set cursorline 
 " dark redish
 :hi CursorLine   cterm=NONE ctermbg=52 ctermfg=NONE
 
@@ -56,7 +55,11 @@ nmap <leader>v :r !pbpaste<CR><CR>
 set showtabline=1
 set laststatus=2
 set number
-"set cursorline
+
+"为文件添加默认的后缀，可以方便地使用`gf`命令进行文件跳转
+set suffixesadd=.js
+set path+=$PWD/src/**
+set path+=$PWD/**
 
 set comments=sl:/*,mb:*,ex:*/
 
@@ -71,7 +74,7 @@ map <leader>q :qall<CR>
 map <leader>e :wqall<CR>
 
 " 运行nodejs
-map <leader>r :!node --harmony %<CR>
+map <leader>r :!node %<CR>
 
 "映射Ctrl+F12键为行号的开关
 map <leader>d :set number!<CR>
@@ -81,11 +84,24 @@ nmap <C-P> :tabprevious<CR>
 
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
-" 设置syntastic_checkers
-"let g:syntastic_check_on_open = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_html_tidy_exec = 'tidy'
-let g:CSSLint_FileTypeList = ['css', 'less', 'sess']
+"###################插件管理###################################################
+" airline setting
+let g:airline#extensions#tabline#enabled = 1
+
+" 设置ale syntax checker
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " NERDTreeTabs
 let g:nerdtree_tabs_open_on_gui_startup = 1
@@ -94,30 +110,28 @@ map <Leader>n <plug>NERDTreeTabsToggle<CR>
 map <Leader>t <plug>NERDTreeTabsFind<CR>
 map <Leader>f <plug>NERDTreeFocusToggle<CR>
 
-"imstart set default keylayout
-let g:smartim_default = 'com.apple.keylayout.US'
-
+nnoremap <leader>u :call BundlesInit()<CR>
 "初始化pathogen插件
 let pathogen = $HOME . '/.vim/bundle/vim-pathogen/autoload/pathogen.vim'
 execute "source " . pathogen
 call pathogen#infect()
 
-nnoremap <leader>u :call BundlesInit()<CR>
 "初始化所有插件
 function! BundlesInit()
     let bundles = {
             \'vim-pathogen' : 'github.com/tpope/vim-pathogen.git',
+            \'ale' : 'github.com/w0rp/ale.git',
             \'nerdtree' : 'github.com/scrooloose/nerdtree.git',
+            \'nerdtree-git-plugin' : 'github.com/Xuyuanp/nerdtree-git-plugin.git',
             \'snipmate.vim' : 'github.com/dzyhenry/snipmate.vim.git',
-            \'syntastic' : 'github.com/scrooloose/syntastic.git',
             \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
             \'indentLine' : 'github.com/Yggdroot/indentLine.git',
-            \'vim-powerline' : 'github.com/Lokaltog/powerline.git',
+            \'vim-airline' : 'https://github.com/vim-airline/vim-airline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git',
-            \'commentary' : 'github.com/tpope/vim-commentary.git',
-            \'smartim' : 'github.com/ybian/smartim.git'
+            \'YouCompleteMe': 'github.com/Valloric/YouCompleteMe.git',
+            \'commentary' : 'github.com/tpope/vim-commentary.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
     if !isdirectory(bundleDir)
@@ -136,3 +150,4 @@ function! BundlesInit()
     endif
     echo 'all bundles are ready.'
 endfunction
+\'commentary' : 'github.com/tpope/vim-commentary.git&apos;
