@@ -40,11 +40,11 @@ setlocal foldlevel=1
 set foldlevelstart=99
 nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
-"背景主题相关
+"background
 let g:solarized_termcolors=256
 set background=dark
 colorscheme darkplus 
-"粘贴相关,设置全局粘贴模式, visual模式修改缩进时不退出该模式,
+"cut & paste
 vnoremap < <gv
 vnoremap > >gv
 set pastetoggle=<F2>
@@ -67,10 +67,8 @@ set comments=sl:/*,mb:*,ex:*/
 " 重新载入配置
 map <leader>b :source ~/.vimrc<CR>
 
-"关闭窗口, writeall
-map <leader>w :w<CR>
+"writeall
 map <leader>s :wall<CR>
-map <leader>q :qall<CR>
 map <leader>e :wqall<CR>
 
 " 运行nodejs
@@ -85,6 +83,13 @@ nmap <C-P> :tabprevious<CR>
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 
 "###################插件管理###################################################
+
+" YouCompleteMe and UltiSnips compatibility, with the helper of supertab
+" (via http://stackoverflow.com/a/22253548/1626737)
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+
 " airline setting
 let g:airline#extensions#tabline#enabled = 1
 
@@ -123,14 +128,15 @@ function! BundlesInit()
             \'ale' : 'github.com/w0rp/ale.git',
             \'nerdtree' : 'github.com/scrooloose/nerdtree.git',
             \'nerdtree-git-plugin' : 'github.com/Xuyuanp/nerdtree-git-plugin.git',
-            \'snipmate.vim' : 'github.com/dzyhenry/snipmate.vim.git',
             \'vim-fugitive' : 'github.com/tpope/vim-fugitive.git',
             \'indentLine' : 'github.com/Yggdroot/indentLine.git',
-            \'vim-airline' : 'https://github.com/vim-airline/vim-airline.git',
+            \'vim-airline' : 'github.com/vim-airline/vim-airline.git',
             \'vim-nerdtree-tabs' : 'github.com/jistr/vim-nerdtree-tabs.git',
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git',
             \'YouCompleteMe': 'github.com/Valloric/YouCompleteMe.git',
+            \'ultisnips': 'github.com/SirVer/ultisnips.git',
+            \'snipmate.vim': 'github.com/dzyhenry/snipmate.vim.git',
             \'commentary' : 'github.com/tpope/vim-commentary.git'
         \}
     let bundleDir = $HOME . '/.vim/bundle/'
