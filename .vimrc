@@ -135,6 +135,7 @@ function! BundlesInit()
             \'vim-javascript-syntax': 'github.com/jelera/vim-javascript-syntax.git',
             \'vim-instant-markdown': 'github.com/suan/vim-instant-markdown.git',
             \'YouCompleteMe': 'github.com/Valloric/YouCompleteMe.git',
+            \'typescirpt-vim': 'github.com/leafgarland/typescript-vim.git',
             \'ultisnips': 'github.com/SirVer/ultisnips.git',
             \'snipmate.vim': 'github.com/dzyhenry/snipmate.vim.git',
             \'commentary' : 'github.com/tpope/vim-commentary.git'
